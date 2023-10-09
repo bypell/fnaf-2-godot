@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d4mevlb2k6b7p"]
+
+[ext_resource type="Texture2D" uid="uid://da4fs1y3btc8e" path="res://building/model/building_floor_color.png" id="1_mt6ks"]
+
+[resource]
+resource_name = "floor"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_mt6ks")
+roughness = 0.5
+uv1_scale = Vector3(2.405, 2.405, 2.405)
+uv1_triplanar = true
+uv1_world_triplanar = true

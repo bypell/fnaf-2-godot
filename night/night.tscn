@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=3 uid="uid://co5v4nlb6yhsg"]
+
+[ext_resource type="PackedScene" uid="uid://dpwouhui1gtm2" path="res://player/player.tscn" id="1_7o2rm"]
+[ext_resource type="Script" path="res://flashlight/flashlight.gd" id="2_5y6nx"]
+[ext_resource type="PackedScene" uid="uid://dwr2noo5aayxr" path="res://player_gui/player_gui.tscn" id="3_8nrym"]
+[ext_resource type="AudioStream" uid="uid://coremqfsmmlb3" path="res://sounds/337434__ev-dawg__speaker-buzz.wav" id="4_2lnn6"]
+[ext_resource type="Environment" uid="uid://p1xvgykl2dn4" path="res://env.tres" id="4_8k3tx"]
+[ext_resource type="PackedScene" uid="uid://bquu10j2jpgt0" path="res://building/model/building.glb" id="4_44ga6"]
+[ext_resource type="PackedScene" uid="uid://bh4nsbfgh1ov7" path="res://light_button/light_button.tscn" id="5_vdyco"]
+[ext_resource type="PackedScene" uid="uid://buaookq3nlqk5" path="res://cameras/camera.tscn" id="7_00x5e"]
+[ext_resource type="PackedScene" uid="uid://dfllx4hjuyydj" path="res://cameras/camera_manager.tscn" id="7_qievm"]
+[ext_resource type="PackedScene" uid="uid://csnv5nuayg5p2" path="res://vent_lights/vent_light.tscn" id="7_tyd6k"]
+
+[node name="Night" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_8k3tx")
+
+[node name="Player" parent="." node_paths=PackedStringArray("gui_node", "cam_manager") instance=ExtResource("1_7o2rm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52852)
+gui_node = NodePath("../PlayerControlsGUI")
+cam_manager = NodePath("../CameraManager")
+max_panning_speed = 80.0
+left_rotation_limit = 30.0
+right_rotation_limit = -30.0
+
+[node name="Camera3D" parent="Player" index="0"]
+current = true
+
+[node name="Pivot" parent="Player/Camera3D/Mask" index="0"]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0.634634, 0)
+
+[node name="Flashlight" type="SpotLight3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57041, 0)
+light_energy = 5.906
+spot_range = 12.0
+spot_angle = 29.4
+spot_angle_attenuation = 4.92458
+script = ExtResource("2_5y6nx")
+player = NodePath("../Player")
+
+[node name="FlashlightSound" type="AudioStreamPlayer" parent="Flashlight"]
+stream = ExtResource("4_2lnn6")
+volume_db = -20.0
+pitch_scale = 0.9
+
+[node name="PlayerControlsGUI" parent="." instance=ExtResource("3_8nrym")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68743, -1.19201)
+light_energy = 2.066
+omni_range = 6.857
+omni_attenuation = 2.37841
+
+[node name="building" parent="." instance=ExtResource("4_44ga6")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.47627, 2.39559, -10.4483)
+light_color = Color(0.847059, 0.886275, 0.909804, 1)
+light_energy = 0.5
+omni_range = 6.885
+omni_attenuation = 1.93187
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82766, 3.43264, -10.4483)
+light_color = Color(0.847059, 0.886275, 0.909804, 1)
+light_energy = 0.5
+omni_range = 6.885
+omni_attenuation = 1.93187
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24198, 2.08363, -24.0667)
+light_color = Color(0.847059, 0.886275, 0.909804, 1)
+light_energy = 0.5
+omni_range = 6.885
+omni_attenuation = 1.93187
+
+[node name="RightLight" parent="." instance=ExtResource("7_tyd6k")]
+
+[node name="LeftLight" parent="." instance=ExtResource("7_tyd6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.741, 1.006, -1.161)
+
+[node name="LightButton" parent="." node_paths=PackedStringArray("connected_light", "player") instance=ExtResource("5_vdyco")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.96795, 0.900858, -0.389448)
+connected_light = NodePath("../RightLight")
+player = NodePath("../Player")
+
+[node name="LightButton2" parent="." node_paths=PackedStringArray("connected_light", "player") instance=ExtResource("5_vdyco")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.968, 0.901, -0.389)
+connected_light = NodePath("../LeftLight")
+player = NodePath("../Player")
+
+[node name="CameraManager" parent="." instance=ExtResource("7_qievm")]
+
+[node name="Cam1" parent="CameraManager" instance=ExtResource("7_00x5e")]
+transform = Transform3D(0.637456, -0.373, 0.674181, 0, 0.875007, 0.48411, -0.770486, -0.308599, 0.557779, -5.58204, 3.23319, -8.43725)
+
+[node name="Cam2" parent="CameraManager" instance=ExtResource("7_00x5e")]
+transform = Transform3D(0.507539, 0.273401, -0.817102, 0, 0.948323, 0.317307, 0.861629, -0.161046, 0.481311, 5.2364, 2.6684, -8.97537)
+
+[node name="Cam3" parent="CameraManager" instance=ExtResource("7_00x5e")]
+transform = Transform3D(0.374606, 0.145045, -0.915769, 0, 0.987688, 0.156436, 0.927184, -0.0586018, 0.369994, 0.180465, 2.75542, -22.61)
+
+[editable path="Player"]
+[editable path="Player/Camera3D/Mask"]
+[editable path="Player/Camera3D/Mask/Pivot/mask"]

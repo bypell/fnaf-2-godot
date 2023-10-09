@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwr2noo5aayxr"]
+
+[ext_resource type="Script" path="res://player_gui/player_gui.gd" id="1_beqfr"]
+[ext_resource type="Texture2D" uid="uid://cai6hcgcnu4iq" path="res://player_gui/mask_button.png" id="2_ynncm"]
+[ext_resource type="Texture2D" uid="uid://c0bh75lyk1vh3" path="res://player_gui/monitor_button.png" id="3_c8p1j"]
+
+[node name="PlayerControlsGUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+script = ExtResource("1_beqfr")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 47)
+layout_mode = 1
+anchor_top = 0.911
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="MaskButton" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.823529)
+custom_minimum_size = Vector2(235, 38)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 40.0
+size_flags_horizontal = 3
+texture = ExtResource("2_ynncm")
+expand_mode = 1
+
+[node name="MonitorButton" type="TextureRect" parent="Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.823529)
+custom_minimum_size = Vector2(235, 38)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -40.0
+size_flags_horizontal = 3
+texture = ExtResource("3_c8p1j")
+expand_mode = 1
+
+[connection signal="mouse_entered" from="Control/MaskButton" to="." method="_on_mask_button_mouse_entered"]
+[connection signal="mouse_entered" from="Control/MonitorButton" to="." method="_on_monitor_button_mouse_entered"]

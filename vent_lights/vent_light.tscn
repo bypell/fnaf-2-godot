@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csnv5nuayg5p2"]
+
+[ext_resource type="Script" path="res://vent_lights/vent_light.gd" id="1_lg3ea"]
+[ext_resource type="AudioStream" uid="uid://coremqfsmmlb3" path="res://sounds/337434__ev-dawg__speaker-buzz.wav" id="2_ulk8d"]
+
+[node name="RightLight" type="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74131, 1.00584, -1.16116)
+light_color = Color(0.741176, 0.870588, 1, 1)
+light_energy = 0.14
+shadow_enabled = true
+script = ExtResource("1_lg3ea")
+
+[node name="LightSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ulk8d")
+volume_db = -20.0
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

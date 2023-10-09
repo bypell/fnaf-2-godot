@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpwouhui1gtm2"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_qsctp"]
+[ext_resource type="Environment" uid="uid://p1xvgykl2dn4" path="res://env.tres" id="2_aqejp"]
+[ext_resource type="PackedScene" uid="uid://dg0ckvn1y0jv4" path="res://player/mask/mask.tscn" id="2_mgixk"]
+[ext_resource type="PackedScene" uid="uid://xuypun6aijv2" path="res://player/monitor/monitor.tscn" id="3_2087r"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_qsctp")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+environment = ExtResource("2_aqejp")
+far = 300.0
+
+[node name="Mask" parent="Camera3D" instance=ExtResource("2_mgixk")]
+unique_name_in_owner = true
+
+[node name="Monitor" parent="Camera3D" instance=ExtResource("3_2087r")]
+unique_name_in_owner = true

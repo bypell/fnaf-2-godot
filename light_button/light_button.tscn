@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh4nsbfgh1ov7"]
+
+[ext_resource type="Script" path="res://light_button/light_button.gd" id="1_usnxp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vj8bk"]
+size = Vector3(0.3, 0.3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwfj7"]
+size = Vector3(1.338, 1.342, 0.121)
+
+[node name="LightButton" type="Area3D"]
+script = ExtResource("1_usnxp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_vj8bk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_vwfj7")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

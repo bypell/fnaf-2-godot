@@ -1,0 +1,162 @@
+[gd_scene load_steps=15 format=3 uid="uid://dfllx4hjuyydj"]
+
+[ext_resource type="Script" path="res://cameras/camera_manager.gd" id="1_ba3l0"]
+[ext_resource type="Texture2D" uid="uid://lyt8huuwqniu" path="res://cameras/map.png" id="2_1emkl"]
+[ext_resource type="Script" path="res://cameras/cam_button.gd" id="3_k2tk3"]
+[ext_resource type="Texture2D" uid="uid://cc1t62ptqfiux" path="res://cameras/static/static_frame_1.png" id="4_im107"]
+[ext_resource type="Texture2D" uid="uid://cpkqfqi3f7q3a" path="res://cameras/static/static_frame_2.png" id="5_al0ie"]
+[ext_resource type="Texture2D" uid="uid://uttouagqr20b" path="res://cameras/static/static_frame_3.png" id="6_qhegm"]
+[ext_resource type="Texture2D" uid="uid://b4nbbl4e36j1d" path="res://cameras/static/static_frame_4.png" id="7_b4mdr"]
+[ext_resource type="Texture2D" uid="uid://brrmh86sbskvw" path="res://cameras/static/static_frame_5.png" id="8_ciquy"]
+[ext_resource type="AudioStream" uid="uid://ch5ikqjcyxkkt" path="res://sounds/cam_click.ogg" id="9_t54n1"]
+[ext_resource type="AudioStream" uid="uid://coremqfsmmlb3" path="res://sounds/337434__ev-dawg__speaker-buzz.wav" id="10_pyw2v"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_sq8e7"]
+frames = 5
+speed_scale = 20.0
+frame_0/texture = ExtResource("4_im107")
+frame_1/texture = ExtResource("5_al0ie")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("6_qhegm")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("7_b4mdr")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("8_ciquy")
+frame_4/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_e0ubl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.0941176)]
+}
+
+[sub_resource type="Animation" id="Animation_h6y4x"]
+resource_name = "lost_communication"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0941176)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c5k7w"]
+_data = {
+"RESET": SubResource("Animation_e0ubl"),
+"lost_communication": SubResource("Animation_h6y4x")
+}
+
+[node name="CameraManager" type="Node"]
+script = ExtResource("1_ba3l0")
+
+[node name="CameraUI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Static" type="TextureRect" parent="CameraUI"]
+modulate = Color(1, 1, 1, 0.0941176)
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_sq8e7")
+expand_mode = 1
+
+[node name="Map" type="TextureRect" parent="CameraUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.665
+anchor_top = 0.299
+anchor_right = 0.978
+anchor_bottom = 0.827
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_1emkl")
+expand_mode = 1
+
+[node name="CamButtonsParent" type="Control" parent="CameraUI/Map"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cam1Button" type="Button" parent="CameraUI/Map/CamButtonsParent" node_paths=PackedStringArray("cam_manager")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.159245
+anchor_top = 0.451705
+anchor_right = 0.317245
+anchor_bottom = 0.555705
+text = "Cam1"
+script = ExtResource("3_k2tk3")
+camera_node_name = "Cam1"
+cam_manager = NodePath("../../../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cam2Button" type="Button" parent="CameraUI/Map/CamButtonsParent" node_paths=PackedStringArray("cam_manager")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.675919
+anchor_top = 0.462226
+anchor_right = 0.834919
+anchor_bottom = 0.555226
+text = "Cam2"
+script = ExtResource("3_k2tk3")
+camera_node_name = "Cam2"
+cam_manager = NodePath("../../../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cam3Button" type="Button" parent="CameraUI/Map/CamButtonsParent" node_paths=PackedStringArray("cam_manager")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.363918
+anchor_top = 0.0439815
+anchor_right = 0.522918
+anchor_bottom = 0.136981
+text = "Cam3"
+script = ExtResource("3_k2tk3")
+camera_node_name = "Cam3"
+cam_manager = NodePath("../../../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraUI"]
+libraries = {
+"": SubResource("AnimationLibrary_c5k7w")
+}
+
+[node name="CamClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_t54n1")
+
+[node name="CamFlashlightSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_pyw2v")
+volume_db = -20.0
+pitch_scale = 0.8

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d4m4da636hy5n"]
+
+[resource]
+resource_name = "ceiling"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.164706, 0.164706, 0.164706, 1)
