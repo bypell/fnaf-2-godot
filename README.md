@@ -14,4 +14,4 @@ A basic game that imitates some of the mechanics of the popular 2014 game [Five 
 - Some other missing stuff
 
 ## Important notes
-> <strong>Again, this is a basic re-creation of FNAF 2. This does not aim to replace the original game, just show how implementing some of the original mechanics can be done in Godot.</strong>
+> <strong>This project does not aim to replace the original game, just show how implementing some of the original mechanics can be done in Godot.</strong>
