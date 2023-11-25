@@ -1,0 +1,51 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://hpn481vlb27v"
+path="res://.godot/imported/building.glb-1ac3f4d41bfed48b7811a06ffebe24d3.scn"
+
+[deps]
+
+source_file="res://building/models/building.glb"
+dest_files=["res://.godot/imported/building.glb-1ac3f4d41bfed48b7811a06ffebe24d3.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=false
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"ceiling": {
+"use_external/enabled": true,
+"use_external/path": "res://building/models/ceiling.tres"
+},
+"floor": {
+"use_external/enabled": true,
+"use_external/path": "res://building/models/floor.tres"
+},
+"vent": {
+"use_external/enabled": true,
+"use_external/path": "res://building/models/vent.tres"
+},
+"wall": {
+"use_external/enabled": true,
+"use_external/path": "res://building/models/wall.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

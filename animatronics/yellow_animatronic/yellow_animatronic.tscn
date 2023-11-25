@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyu2s4nqja5ws"]
+
+[ext_resource type="Script" path="res://animatronics/yellow_animatronic/yellow_animatronic.gd" id="1_jy16d"]
+[ext_resource type="PackedScene" uid="uid://clkgsftlw52ta" path="res://animatronics/yellow_animatronic/models/yellow_animatronic.glb" id="2_wteaa"]
+[ext_resource type="AudioStream" uid="uid://drmh55gyy448r" path="res://sounds/336355__ev-dawg__heater-vent-hit-lower-part-modified.wav" id="3_synp2"]
+
+[node name="YellowAnimatronic" type="Node3D"]
+script = ExtResource("1_jy16d")
+animation_player_path = "yellow_animatronic/AnimationPlayer"
+
+[node name="yellow_animatronic" parent="." instance=ExtResource("2_wteaa")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="yellow_animatronic/Armature" index="0"]
+bones/0/position = Vector3(0.00990124, -0.183608, 0.348098)
+bones/0/rotation = Quaternion(0.662661, -0.142766, -0.0591664, 0.732801)
+bones/1/rotation = Quaternion(-0.547402, -0.352091, 0.295639, 0.699271)
+bones/3/rotation = Quaternion(0.254455, -0.364918, -0.513027, 0.734092)
+bones/4/rotation = Quaternion(0.877389, -0.00516327, -0.0110642, 0.479624)
+bones/5/rotation = Quaternion(-0.129924, 0.741795, 0.0612354, 0.655065)
+bones/7/rotation = Quaternion(0.494095, 0.333923, 0.529067, 0.6037)
+bones/8/rotation = Quaternion(0.469224, 0.00950579, 0.00591704, 0.883008)
+bones/9/rotation = Quaternion(0.250971, -0.638902, -0.262165, 0.678297)
+bones/10/rotation = Quaternion(0.760465, 0.35544, 0.519142, 0.160767)
+bones/10/scale = Vector3(1.00007, 1, 1.00001)
+bones/11/rotation = Quaternion(-0.187708, 0.00148455, 0.471367, 0.861729)
+bones/11/scale = Vector3(1.00002, 0.999976, 1)
+bones/12/rotation = Quaternion(0.523659, -0.430971, -0.699829, 0.224241)
+bones/12/scale = Vector3(1.00007, 0.999997, 1.00001)
+bones/13/rotation = Quaternion(-0.192562, -0.00147006, -0.483558, 0.853867)
+bones/13/scale = Vector3(1.00003, 0.999979, 1)
+bones/14/position = Vector3(0.233342, -0.577347, -0.792764)
+bones/14/rotation = Quaternion(0.250868, 0.660532, 0.240184, 0.665638)
+bones/15/position = Vector3(9.807e-06, -3.38626e-05, -5.24474e-07)
+bones/16/position = Vector3(0.227828, -0.924135, -0.237107)
+bones/16/rotation = Quaternion(0.672327, 0.0463903, 0.737588, 0.0422857)
+bones/17/position = Vector3(-0.248459, -0.575138, -0.786709)
+bones/17/rotation = Quaternion(0.244801, -0.653259, -0.246366, 0.672778)
+bones/18/position = Vector3(-3.71365e-05, -6.79264e-05, 6.411e-06)
+bones/19/position = Vector3(-0.227828, -0.924135, -0.237107)
+bones/19/rotation = Quaternion(-0.672327, 0.0463902, 0.737588, -0.0422857)
+bones/20/position = Vector3(0.602013, -0.336761, 0.255272)
+bones/21/position = Vector3(-0.602013, -0.336761, 0.255272)
+bones/22/position = Vector3(0.34465, -0.768118, 1.36886)
+bones/22/rotation = Quaternion(-0.516709, 0.455349, 0.507613, -0.517685)
+bones/23/position = Vector3(-0.65881, -0.768118, 1.36886)
+bones/23/rotation = Quaternion(0.516709, 0.455349, 0.507613, 0.517685)
+
+[node name="AnimationPlayer" parent="yellow_animatronic" index="3"]
+autoplay = "normal"
+
+[node name="VentLeavingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_synp2")
+volume_db = -15.0
+
+[editable path="yellow_animatronic"]

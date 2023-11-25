@@ -1,4 +1,7 @@
 extends Node
+class_name CameraManager
+
+const DEFAULT_CAM_INDEX = 0
 
 var selected_cam : Camera3D
 var all_cams = {}
@@ -23,13 +26,17 @@ func _ready():
 		if c is BaseButton:
 			c.connect("cam_button_pressed", set_current_cam)
 	
+	# Set default cam
 	if not all_cams.values().is_empty():
-		selected_cam = all_cams.values()[0]
+		selected_cam = all_cams.values()[DEFAULT_CAM_INDEX]
 	else:
-		printerr("no cams present")
+		printerr("no cameras are under camera manager")
 
 
 func _process(delta):
+	# Turning on flashlight on the current camera if the action is pressed
+	# We are just changing the camera's visibility (which does not 
+	# affect the camera in itself, just it's child SpotLight3D)
 	if Input.is_action_pressed("flashlight") and selected_cam.current:
 		selected_cam.visible = true
 		if not cam_flashlight_sound.playing:
@@ -46,6 +53,12 @@ func set_current_cam(cam : String):
 	selected_cam = all_cams[cam.to_lower()]
 	selected_cam.current = true
 	cam_click_sound.play()
+	lose_communication(1.0)
+
+
+func lose_communication(time_scale : float):
+	ui_animation_player.stop()
+	ui_animation_player.speed_scale = time_scale
 	ui_animation_player.play("lost_communication")
 
 

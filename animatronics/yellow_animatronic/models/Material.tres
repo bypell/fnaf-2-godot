@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cmv51b85v4kag"]
+
+[ext_resource type="Texture2D" uid="uid://c4y2wvf3ow0n4" path="res://animatronics/yellow_animatronic/models/yellow_animatronic_godot_face_yellow.png" id="1_4dj5o"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_4dj5o")
+roughness = 0.5

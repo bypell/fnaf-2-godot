@@ -1,106 +1,326 @@
-[gd_scene load_steps=11 format=3 uid="uid://co5v4nlb6yhsg"]
+[gd_scene load_steps=23 format=3 uid="uid://co5v4nlb6yhsg"]
 
 [ext_resource type="PackedScene" uid="uid://dpwouhui1gtm2" path="res://player/player.tscn" id="1_7o2rm"]
-[ext_resource type="Script" path="res://flashlight/flashlight.gd" id="2_5y6nx"]
+[ext_resource type="Script" path="res://night/night.gd" id="1_n5jdo"]
 [ext_resource type="PackedScene" uid="uid://dwr2noo5aayxr" path="res://player_gui/player_gui.tscn" id="3_8nrym"]
 [ext_resource type="AudioStream" uid="uid://coremqfsmmlb3" path="res://sounds/337434__ev-dawg__speaker-buzz.wav" id="4_2lnn6"]
 [ext_resource type="Environment" uid="uid://p1xvgykl2dn4" path="res://env.tres" id="4_8k3tx"]
-[ext_resource type="PackedScene" uid="uid://bquu10j2jpgt0" path="res://building/model/building.glb" id="4_44ga6"]
+[ext_resource type="PackedScene" uid="uid://hpn481vlb27v" path="res://building/models/building.glb" id="4_44ga6"]
 [ext_resource type="PackedScene" uid="uid://bh4nsbfgh1ov7" path="res://light_button/light_button.tscn" id="5_vdyco"]
+[ext_resource type="Script" path="res://player/flashlight/desk_flashlight.gd" id="6_36bc8"]
+[ext_resource type="AudioStream" uid="uid://cynjem3s1wwrb" path="res://sounds/337434__ev-dawg__speaker-buzz2.wav" id="6_u70a1"]
 [ext_resource type="PackedScene" uid="uid://buaookq3nlqk5" path="res://cameras/camera.tscn" id="7_00x5e"]
 [ext_resource type="PackedScene" uid="uid://dfllx4hjuyydj" path="res://cameras/camera_manager.tscn" id="7_qievm"]
 [ext_resource type="PackedScene" uid="uid://csnv5nuayg5p2" path="res://vent_lights/vent_light.tscn" id="7_tyd6k"]
+[ext_resource type="PackedScene" uid="uid://b8p0plxounngf" path="res://night/clock/clock.tscn" id="9_85gdu"]
+[ext_resource type="PackedScene" uid="uid://btyovmshtrlw" path="res://animatronics/blue_animatronic/blue_animatronic.tscn" id="11_8ricc"]
+[ext_resource type="Script" path="res://animatronics/animatronic_utilities/events/flashing_lights_event_manager.gd" id="11_88m61"]
+[ext_resource type="Script" path="res://animatronics/animatronic_utilities/positions/animatronic_positions_container.gd" id="14_nv32f"]
+[ext_resource type="Script" path="res://animatronics/animatronic_utilities/positions/animatronic_position.gd" id="15_jcsik"]
+[ext_resource type="AudioStream" uid="uid://c5u7x2bdjkgrq" path="res://sounds/341668__dangthaiduy007__jump-scare-sound.ogg" id="16_6qbnt"]
+[ext_resource type="PackedScene" uid="uid://bwo3quys0jb0n" path="res://animatronics/blue_animatronic/models/blue_animatronic.glb" id="16_3813p"]
+[ext_resource type="Script" path="res://animatronics/animatronic_utilities/jumpscares/animatronic_jumpscare.gd" id="16_b2i0h"]
+[ext_resource type="PackedScene" uid="uid://dyu2s4nqja5ws" path="res://animatronics/yellow_animatronic/yellow_animatronic.tscn" id="21_yo1tw"]
+[ext_resource type="PackedScene" uid="uid://clkgsftlw52ta" path="res://animatronics/yellow_animatronic/models/yellow_animatronic.glb" id="22_oi4qf"]
 
-[node name="Night" type="Node3D"]
+[node name="Night" type="Node3D" node_paths=PackedStringArray("clock", "blue_animatronic", "yellow_animatronic")]
+script = ExtResource("1_n5jdo")
+clock = NodePath("Clock")
+blue_animatronic = NodePath("Animatronics/BlueAnimatronic")
+yellow_animatronic = NodePath("Animatronics/YellowAnimatronic")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_8k3tx")
+
+[node name="building_model" parent="." instance=ExtResource("4_44ga6")]
+metadata/_edit_lock_ = true
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="building_model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.98449, 2.78312, -10.5161)
+light_color = Color(0.847059, 0.886275, 0.909804, 1)
+light_energy = 0.5
+omni_range = 6.885
+omni_attenuation = 1.93187
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="building_model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36269, 3.30383, -10.426)
+light_color = Color(0.847059, 0.886275, 0.909804, 1)
+light_energy = 0.5
+omni_range = 6.885
+omni_attenuation = 1.93187
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="building_model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0122824, 2.73607, -24.1737)
+light_color = Color(0.847059, 0.886275, 0.909804, 1)
+light_energy = 0.5
+shadow_enabled = true
+omni_range = 5.10944
+omni_attenuation = 1.93187
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="building_model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1549, 3.00089, -23.3966)
+light_color = Color(0.847059, 0.886275, 0.909804, 1)
+omni_range = 9.82
+omni_attenuation = 1.93187
+
+[node name="FlashingLightsEventManager" type="Node" parent="."]
+script = ExtResource("11_88m61")
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="FlashingLightsEventManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0305705, 3.35922, -0.402373)
+light_energy = 2.066
+omni_range = 4.62927
+omni_attenuation = 2.82842
+
+[node name="OmniLight3D8" type="OmniLight3D" parent="FlashingLightsEventManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0305705, 3.05133, -2.54199)
+light_energy = 1.201
+omni_range = 5.24392
+omni_attenuation = 2.82842
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="FlashingLightsEventManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09598, 3.35922, -0.402373)
+light_energy = 0.225
+light_specular = 3.738
+shadow_enabled = true
+omni_range = 4.62927
+omni_attenuation = 0.757857
+
+[node name="OmniLight3D9" type="OmniLight3D" parent="FlashingLightsEventManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.096, 3.359, -0.402)
+light_energy = 0.225
+light_specular = 3.738
+shadow_enabled = true
+omni_range = 4.62927
+omni_attenuation = 0.757857
+
+[node name="CeilingLights" type="Node3D" parent="FlashingLightsEventManager"]
+
+[node name="Timer" type="Timer" parent="FlashingLightsEventManager"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("gui_node", "cam_manager") instance=ExtResource("1_7o2rm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52852)
 gui_node = NodePath("../PlayerControlsGUI")
 cam_manager = NodePath("../CameraManager")
+panning_mode = "Use Curve"
 max_panning_speed = 80.0
 left_rotation_limit = 30.0
 right_rotation_limit = -30.0
 
-[node name="Camera3D" parent="Player" index="0"]
-current = true
-
-[node name="Pivot" parent="Player/Camera3D/Mask" index="0"]
-transform = Transform3D(1, 0, 0, 0, -3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0.634634, 0)
-
-[node name="Flashlight" type="SpotLight3D" parent="." node_paths=PackedStringArray("player")]
+[node name="DeskFlashlight" type="SpotLight3D" parent="." node_paths=PackedStringArray("player", "vent_lights")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57041, 0)
 light_energy = 5.906
 spot_range = 12.0
 spot_angle = 29.4
 spot_angle_attenuation = 4.92458
-script = ExtResource("2_5y6nx")
+script = ExtResource("6_36bc8")
 player = NodePath("../Player")
+vent_lights = [NodePath("../VentLights/RightLight"), NodePath("../VentLights/LeftLight")]
 
-[node name="FlashlightSound" type="AudioStreamPlayer" parent="Flashlight"]
+[node name="FlashlightSound" type="AudioStreamPlayer" parent="DeskFlashlight"]
 stream = ExtResource("4_2lnn6")
 volume_db = -20.0
 pitch_scale = 0.9
 
-[node name="PlayerControlsGUI" parent="." instance=ExtResource("3_8nrym")]
+[node name="FlashlightSoundNotWorking" type="AudioStreamPlayer" parent="DeskFlashlight"]
+stream = ExtResource("6_u70a1")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.68743, -1.19201)
-light_energy = 2.066
-omni_range = 6.857
-omni_attenuation = 2.37841
-
-[node name="building" parent="." instance=ExtResource("4_44ga6")]
-
-[node name="OmniLight3D" type="OmniLight3D" parent="building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.47627, 2.39559, -10.4483)
-light_color = Color(0.847059, 0.886275, 0.909804, 1)
-light_energy = 0.5
-omni_range = 6.885
-omni_attenuation = 1.93187
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.82766, 3.43264, -10.4483)
-light_color = Color(0.847059, 0.886275, 0.909804, 1)
-light_energy = 0.5
-omni_range = 6.885
-omni_attenuation = 1.93187
-
-[node name="OmniLight3D3" type="OmniLight3D" parent="building"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24198, 2.08363, -24.0667)
-light_color = Color(0.847059, 0.886275, 0.909804, 1)
-light_energy = 0.5
-omni_range = 6.885
-omni_attenuation = 1.93187
-
-[node name="RightLight" parent="." instance=ExtResource("7_tyd6k")]
-
-[node name="LeftLight" parent="." instance=ExtResource("7_tyd6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.741, 1.006, -1.161)
-
-[node name="LightButton" parent="." node_paths=PackedStringArray("connected_light", "player") instance=ExtResource("5_vdyco")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.96795, 0.900858, -0.389448)
-connected_light = NodePath("../RightLight")
-player = NodePath("../Player")
-
-[node name="LightButton2" parent="." node_paths=PackedStringArray("connected_light", "player") instance=ExtResource("5_vdyco")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.968, 0.901, -0.389)
-connected_light = NodePath("../LeftLight")
-player = NodePath("../Player")
+[node name="DisabledTimer" type="Timer" parent="DeskFlashlight"]
 
 [node name="CameraManager" parent="." instance=ExtResource("7_qievm")]
 
 [node name="Cam1" parent="CameraManager" instance=ExtResource("7_00x5e")]
-transform = Transform3D(0.637456, -0.373, 0.674181, 0, 0.875007, 0.48411, -0.770486, -0.308599, 0.557779, -5.58204, 3.23319, -8.43725)
+transform = Transform3D(0.84795, -0.256615, 0.46382, 5.5323e-08, 0.875007, 0.48411, -0.530076, -0.410501, 0.741962, -5.58204, 3.23319, -8.43725)
 
 [node name="Cam2" parent="CameraManager" instance=ExtResource("7_00x5e")]
-transform = Transform3D(0.507539, 0.273401, -0.817102, 0, 0.948323, 0.317307, 0.861629, -0.161046, 0.481311, 5.2364, 2.6684, -8.97537)
+transform = Transform3D(0.70802, 0.22408, -0.669698, -1.69296e-08, 0.948323, 0.317307, 0.706193, -0.22466, 0.671431, 5.2364, 2.6684, -8.97537)
 
 [node name="Cam3" parent="CameraManager" instance=ExtResource("7_00x5e")]
 transform = Transform3D(0.374606, 0.145045, -0.915769, 0, 0.987688, 0.156436, 0.927184, -0.0586018, 0.369994, 0.180465, 2.75542, -22.61)
 
-[editable path="Player"]
-[editable path="Player/Camera3D/Mask"]
-[editable path="Player/Camera3D/Mask/Pivot/mask"]
+[node name="Cam4" parent="CameraManager" instance=ExtResource("7_00x5e")]
+transform = Transform3D(0.374606, 0.145045, -0.915769, 0, 0.987688, 0.156436, 0.927184, -0.0586019, 0.369994, 13.6448, 2.75542, -19.7346)
+
+[node name="Cam5" parent="CameraManager" instance=ExtResource("7_00x5e")]
+transform = Transform3D(0.554292, 0.130205, -0.822075, 9.0361e-09, 0.987688, 0.156436, 0.832322, -0.0867113, 0.547468, 7.24268, 0.670067, -1.06798)
+
+[node name="Cam6" parent="CameraManager" instance=ExtResource("7_00x5e")]
+transform = Transform3D(0.570714, -0.128456, 0.81104, 0, 0.987688, 0.156434, -0.821149, -0.0892793, 0.563687, -7.243, 0.67, -0.753)
+
+[node name="PlayerControlsGUI" parent="." instance=ExtResource("3_8nrym")]
+
+[node name="Clock" parent="." instance=ExtResource("9_85gdu")]
+
+[node name="VentLights" type="Node" parent="."]
+
+[node name="RightLight" parent="VentLights" instance=ExtResource("7_tyd6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81801, 1.00584, -0.902388)
+
+[node name="LeftLight" parent="VentLights" instance=ExtResource("7_tyd6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.741, 1.006, -1.161)
+
+[node name="LightButtonRight" parent="VentLights" node_paths=PackedStringArray("connected_light", "player") instance=ExtResource("5_vdyco")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.96795, 0.900858, -0.389448)
+connected_light = NodePath("../RightLight")
+player = NodePath("../../Player")
+
+[node name="LightButtonLeft" parent="VentLights" node_paths=PackedStringArray("connected_light", "player") instance=ExtResource("5_vdyco")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.968, 0.901, -0.389)
+connected_light = NodePath("../LeftLight")
+player = NodePath("../../Player")
+
+[node name="Animatronics" type="Node" parent="."]
+
+[node name="BlueAnimatronic" parent="Animatronics" node_paths=PackedStringArray("right_vent_light", "flashing_lights_event_manager", "player", "animatronic_positions_container", "cam_manager", "player_desk_flashlight", "animatronic_jumpscare") instance=ExtResource("11_8ricc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.61011, 1.37, -8.07277)
+right_vent_light = NodePath("../../VentLights/RightLight")
+flashing_lights_event_manager = NodePath("../../FlashingLightsEventManager")
+player = NodePath("../../Player")
+animatronic_positions_container = NodePath("../../AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer")
+cam_manager = NodePath("../../CameraManager")
+player_desk_flashlight = NodePath("../../DeskFlashlight")
+animatronic_jumpscare = NodePath("../../AnimatronicJumpscares/BlueAnimatronicJumpscare")
+
+[node name="YellowAnimatronic" parent="Animatronics" node_paths=PackedStringArray("left_vent_light", "flashing_lights_event_manager", "player", "animatronic_positions_container", "cam_manager", "player_desk_flashlight", "animatronic_jumpscare") instance=ExtResource("21_yo1tw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.754, 1.37, -8.202)
+left_vent_light = NodePath("../../VentLights/LeftLight")
+flashing_lights_event_manager = NodePath("../../FlashingLightsEventManager")
+player = NodePath("../../Player")
+animatronic_positions_container = NodePath("../../AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer")
+cam_manager = NodePath("../../CameraManager")
+player_desk_flashlight = NodePath("../../DeskFlashlight")
+animatronic_jumpscare = NodePath("../../AnimatronicJumpscares/YellowAnimatronicJumpscare")
+
+[node name="AnimatronicPositionsContainers" type="Node" parent="."]
+
+[node name="BlueAnimatronicPositionsContainer" type="Node3D" parent="AnimatronicPositionsContainers"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("14_nv32f")
+metadata/_edit_lock_ = true
+
+[node name="Stage" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(-0.763988, 0, 0.645231, 0, 1, 0, -0.645231, 0, -0.763988, -17.2922, 1.37, 21.1432)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="SmallHallway" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(0.162224, 0, -0.986754, 0, 1, 0, 0.986754, 0, 0.162224, -5.22823, 1.37, 23.6004)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "squatting"
+
+[node name="PartyRoomLeft" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(0.861008, 0.247503, 0.444305, 0.048444, 0.829717, -0.556077, -0.506278, 0.500311, 0.702403, 5.82066, 1.48439, 8.68876)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="Hallway" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0344456, 1.37, 9.54892)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "tpose"
+
+[node name="PartyRoomRight" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(0.684254, 0, -0.729243, 0, 1, 0, 0.729243, 0, 0.684254, -8.89224, 1.37, 12.0883)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="RightVent" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(0.556728, -0.254822, 0.790645, -0.825902, -0.0677031, 0.559733, -0.0891033, -0.964615, -0.24815, -8.16689, 0.522396, 3.02395)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="OfficeRightVent" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(0.0174523, 0, -0.999847, 0, 1, 0, 0.999847, 0, 0.0174523, -6.17117, 0.784321, 1.56359)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "crawling"
+
+[node name="Office" type="Marker3D" parent="AnimatronicPositionsContainers/BlueAnimatronicPositionsContainer"]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0.072513, 1.41355, 2.35676)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="YellowAnimatronicPositionsContainer" type="Node3D" parent="AnimatronicPositionsContainers"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("14_nv32f")
+metadata/_edit_lock_ = true
+
+[node name="Stage" type="Marker3D" parent="AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer"]
+transform = Transform3D(0.663927, 0, -0.747798, 0, 1, 0, 0.747798, 0, 0.663927, -26.9651, 1.37, 25.9351)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="Stage2" type="Marker3D" parent="AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer"]
+transform = Transform3D(0.604975, 0, -0.796245, 0, 1, 0, 0.796245, 0, 0.604975, -19.626, 1.37, 24.1819)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "oneleg"
+
+[node name="Stage3" type="Marker3D" parent="AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer"]
+transform = Transform3D(0.604975, 0, -0.796245, 0, 1, 0, 0.796245, 0, 0.604975, -17.3442, 1.37, 22.9695)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "oneleg2"
+
+[node name="SmallHallway" type="Marker3D" parent="AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer"]
+transform = Transform3D(0.663926, 0, -0.747798, 0, 1, 0, 0.747798, 0, 0.663926, -1.05636, 1.37, 23.7043)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="PartyRoomLeft" type="Marker3D" parent="AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer"]
+transform = Transform3D(0.663926, 0, -0.747797, 0, 1, 0, 0.747798, 0, 0.663926, 6.14898, 1.37, 11.5616)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "vibing"
+
+[node name="LeftVent" type="Marker3D" parent="AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer"]
+transform = Transform3D(-0.028884, 0.601792, 0.79813, -0.970007, 0.175919, -0.167747, -0.241356, -0.779038, 0.57866, 7.81811, 0.281116, 3.66705)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "normal"
+
+[node name="OfficeLeftVent" type="Marker3D" parent="AnimatronicPositionsContainers/YellowAnimatronicPositionsContainer"]
+transform = Transform3D(-0.125593, 0, 0.992081, 0, 1, 0, -0.992081, 0, -0.125593, 6.171, 0.784, 1.564)
+gizmo_extents = 0.5
+script = ExtResource("15_jcsik")
+animation_to_play = "crawling"
+
+[node name="AnimatronicJumpscares" type="Node" parent="."]
+
+[node name="YellowAnimatronicJumpscare" type="Node3D" parent="AnimatronicJumpscares"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.741434, 0.239716)
+script = ExtResource("16_b2i0h")
+metadata/_edit_lock_ = true
+
+[node name="yellow_animatronic" parent="AnimatronicJumpscares/YellowAnimatronicJumpscare" instance=ExtResource("22_oi4qf")]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="AnimatronicJumpscares/YellowAnimatronicJumpscare/yellow_animatronic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22086, 1.14662)
+light_energy = 0.2
+omni_range = 1.447
+omni_attenuation = 5.85634
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatronicJumpscares/YellowAnimatronicJumpscare"]
+stream = ExtResource("16_6qbnt")
+
+[node name="BlueAnimatronicJumpscare" type="Node3D" parent="AnimatronicJumpscares"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64, -0.135)
+script = ExtResource("16_b2i0h")
+metadata/_edit_lock_ = true
+
+[node name="blue_animatronic" parent="AnimatronicJumpscares/BlueAnimatronicJumpscare" instance=ExtResource("16_3813p")]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimatronicJumpscares/BlueAnimatronicJumpscare"]
+stream = ExtResource("16_6qbnt")
+
+[connection signal="timeout" from="DeskFlashlight/DisabledTimer" to="DeskFlashlight" method="_on_disabled_timer_timeout"]

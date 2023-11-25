@@ -4,5 +4,6 @@
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 light_energy = 3.0
+shadow_enabled = true
 spot_range = 8.35229
 spot_angle = 32.559

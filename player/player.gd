@@ -1,4 +1,8 @@
 extends Node3D
+class_name Player
+
+
+signal monitor_flipped_up
 
 
 @export_group("Links")
@@ -7,12 +11,11 @@ extends Node3D
 @export var gui_node : Control
 @export var cam_manager : Node
 
-
 @export_group("Panning Settings")
 
 ## Player view panning mode. 
-## [br][br]When set to [code]Use Curve[/code], the panning speed increases as the mouse goes away from the center of the screen based on [param panning_curve].
-## [br][br]When set to [code]Absolute[/code], all parameters except the rotation limits are ignored.
+## [br][br]When set to [code]Use Curve[/code], the panning speed increases as the mouse moves away from the center of the screen based on [param panning_curve].
+## [br][br]When set to [code]Absolute[/code], all panning parameters except the rotation limits are ignored.
 @export_enum("Use Curve", "Absolute") var panning_mode : String = "Use Curve"
 
 ## Curve that is used to increase the panning speed as the mouse moves away from the center of the screen.
@@ -32,7 +35,6 @@ extends Node3D
 
 ## Turn this on to ignore rotation limits.
 @export var allow_360 : bool = false
-
 
 @onready var cam = $Camera3D
 @onready var mask = %Mask
@@ -94,6 +96,13 @@ func tell_mask_to_toggle():
 		return
 	
 	mask.toggle_mask()
+	
+
+func is_mask_on() -> bool:
+	return mask.mask_on
+
+func is_monitor_on() -> bool:
+	return monitor.monitor_on
 
 
 func flip_monitor():
@@ -109,3 +118,12 @@ func flip_monitor():
 		await monitor.turned_on
 		cam.current = false
 		cam_manager.enable_camera_display()
+		monitor_flipped_up.emit()
+
+
+func force_monitor_down():
+	if monitor.monitor_on:
+		monitor.turn_off()
+		cam_manager.disable_camera_display()
+		cam.current = true
+		await monitor.turned_off

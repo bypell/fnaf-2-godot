@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://1qr541pj8vgc"]
-
-[ext_resource type="Texture2D" uid="uid://383mqkk1ymri" path="res://building/model/building_vent_color.png" id="1_gawo7"]
-
-[resource]
-resource_name = "vent"
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_gawo7")
-roughness = 0.5

@@ -7,6 +7,7 @@
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_qsctp")
+panning_mode = "Absolute"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
@@ -18,3 +19,6 @@ unique_name_in_owner = true
 
 [node name="Monitor" parent="Camera3D" instance=ExtResource("3_2087r")]
 unique_name_in_owner = true
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+current = true

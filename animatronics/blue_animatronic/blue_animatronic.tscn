@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://btyovmshtrlw"]
+
+[ext_resource type="Script" path="res://animatronics/blue_animatronic/blue_animatronic.gd" id="1_cdetq"]
+[ext_resource type="PackedScene" uid="uid://bwo3quys0jb0n" path="res://animatronics/blue_animatronic/models/blue_animatronic.glb" id="2_enftd"]
+
+[node name="BlueAnimatronic" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.37, 0)
+script = ExtResource("1_cdetq")
+animation_player_path = "blue_animatronic/AnimationPlayer"
+
+[node name="blue_animatronic" parent="." instance=ExtResource("2_enftd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.000308007, 0.000360012, -8.01086e-05)
+
+[node name="Skeleton3D" parent="blue_animatronic/Armature" index="0"]
+bones/3/rotation = Quaternion(-0.0154024, -0.0100998, -0.601205, 0.798883)
+bones/5/rotation = Quaternion(-0.0457701, 0.00933936, -0.112137, 0.992594)
+bones/7/rotation = Quaternion(-0.0154028, 0.0100993, 0.601205, 0.798883)
+bones/9/rotation = Quaternion(-0.0457716, -0.00933927, 0.112137, 0.992594)
+bones/10/rotation = Quaternion(-0.717598, -0.047617, -0.694541, 0.0199658)
+bones/10/scale = Vector3(1.00006, 1, 1.00001)
+bones/11/rotation = Quaternion(-0.0369536, 0.00171091, 0.0927969, 0.994998)
+bones/12/rotation = Quaternion(-0.717598, 0.0476176, 0.694541, 0.0199656)
+bones/12/scale = Vector3(1.00006, 1, 1.00001)
+bones/13/rotation = Quaternion(-0.036954, -0.00171097, -0.092798, 0.994998)
+bones/19/rotation = Quaternion(-0.476347, 0.522584, 0.522584, -0.476347)
+bones/20/rotation = Quaternion(0.0552563, -0.704944, 0.704945, -0.0552563)
+bones/21/rotation = Quaternion(0.0552562, 0.704945, -0.704944, -0.0552562)
+bones/23/rotation = Quaternion(0.0232852, 0.090292, 0.995366, -0.0234994)
+
+[node name="AnimationPlayer" parent="blue_animatronic" index="3"]
+autoplay = "normal"
+
+[editable path="blue_animatronic"]

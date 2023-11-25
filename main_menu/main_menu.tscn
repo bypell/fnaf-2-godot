@@ -1,0 +1,129 @@
+[gd_scene load_steps=14 format=3 uid="uid://47yj0u0iudr2"]
+
+[ext_resource type="Texture2D" uid="uid://cc1t62ptqfiux" path="res://common/static/static_frame_1.png" id="1_djgom"]
+[ext_resource type="PackedScene" uid="uid://bwo3quys0jb0n" path="res://animatronics/blue_animatronic/models/blue_animatronic.glb" id="1_t3jvm"]
+[ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_wtisl"]
+[ext_resource type="Texture2D" uid="uid://cpkqfqi3f7q3a" path="res://common/static/static_frame_2.png" id="2_1n2bu"]
+[ext_resource type="Texture2D" uid="uid://uttouagqr20b" path="res://common/static/static_frame_3.png" id="3_ydqbx"]
+[ext_resource type="Texture2D" uid="uid://b4nbbl4e36j1d" path="res://common/static/static_frame_4.png" id="4_fd8qq"]
+[ext_resource type="Texture2D" uid="uid://brrmh86sbskvw" path="res://common/static/static_frame_5.png" id="5_jpi78"]
+[ext_resource type="PackedScene" uid="uid://clkgsftlw52ta" path="res://animatronics/yellow_animatronic/models/yellow_animatronic.glb" id="8_j61co"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_51c3w"]
+frames = 5
+speed_scale = 20.0
+frame_0/texture = ExtResource("1_djgom")
+frame_1/texture = ExtResource("2_1n2bu")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_ydqbx")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_fd8qq")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_jpi78")
+frame_4/duration = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xysr5"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twn6q"]
+bg_color = Color(1, 1, 1, 0.0313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvmwq"]
+bg_color = Color(1, 1, 1, 0.0313726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g57hx"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wtisl")
+
+[node name="Static" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.14902)
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_51c3w")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 40
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Five 
+Nights 
+at 
+Robot Thingies"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NightOneButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_xysr5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_twn6q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvmwq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g57hx")
+text = "Night 1"
+alignment = 0
+
+[node name="NightTwoButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.752941, 0.752941, 0.752941, 1)
+theme_override_font_sizes/font_size = 31
+theme_override_styles/normal = SubResource("StyleBoxFlat_xysr5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_twn6q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_mvmwq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_g57hx")
+text = "Night 2"
+alignment = 0
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="blue_animatronic" parent="Background" instance=ExtResource("1_t3jvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.698275, -1.17157, 0.761068)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.416245, 0.897024, 2.52208)
+
+[node name="Camera3D" type="Camera3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.26806)
+fov = 38.6
+
+[node name="yellow_animatronic" parent="Background" instance=ExtResource("8_j61co")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.313401, -1.16383, -0.16573)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NightOneButton" to="." method="_on_night_one_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/NightTwoButton" to="." method="_on_night_two_button_pressed"]

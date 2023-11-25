@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://cameras/camera_manager.gd" id="1_ba3l0"]
 [ext_resource type="Texture2D" uid="uid://lyt8huuwqniu" path="res://cameras/map.png" id="2_1emkl"]
 [ext_resource type="Script" path="res://cameras/cam_button.gd" id="3_k2tk3"]
-[ext_resource type="Texture2D" uid="uid://cc1t62ptqfiux" path="res://cameras/static/static_frame_1.png" id="4_im107"]
-[ext_resource type="Texture2D" uid="uid://cpkqfqi3f7q3a" path="res://cameras/static/static_frame_2.png" id="5_al0ie"]
-[ext_resource type="Texture2D" uid="uid://uttouagqr20b" path="res://cameras/static/static_frame_3.png" id="6_qhegm"]
-[ext_resource type="Texture2D" uid="uid://b4nbbl4e36j1d" path="res://cameras/static/static_frame_4.png" id="7_b4mdr"]
-[ext_resource type="Texture2D" uid="uid://brrmh86sbskvw" path="res://cameras/static/static_frame_5.png" id="8_ciquy"]
+[ext_resource type="Texture2D" uid="uid://cc1t62ptqfiux" path="res://common/static/static_frame_1.png" id="4_im107"]
+[ext_resource type="Texture2D" uid="uid://cpkqfqi3f7q3a" path="res://common/static/static_frame_2.png" id="5_al0ie"]
+[ext_resource type="Texture2D" uid="uid://uttouagqr20b" path="res://common/static/static_frame_3.png" id="6_qhegm"]
+[ext_resource type="Texture2D" uid="uid://b4nbbl4e36j1d" path="res://common/static/static_frame_4.png" id="7_b4mdr"]
+[ext_resource type="Texture2D" uid="uid://brrmh86sbskvw" path="res://common/static/static_frame_5.png" id="8_ciquy"]
 [ext_resource type="AudioStream" uid="uid://ch5ikqjcyxkkt" path="res://sounds/cam_click.ogg" id="9_t54n1"]
 [ext_resource type="AudioStream" uid="uid://coremqfsmmlb3" path="res://sounds/337434__ev-dawg__speaker-buzz.wav" id="10_pyw2v"]
 
@@ -41,7 +41,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_h6y4x"]
 resource_name = "lost_communication"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,7 +49,7 @@ tracks/0/path = NodePath("Static:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.0941176)]
@@ -86,6 +86,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("AnimatedTexture_sq8e7")
 expand_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="Map" type="TextureRect" parent="CameraUI"]
 layout_mode = 1
@@ -109,43 +110,76 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Cam1Button" type="Button" parent="CameraUI/Map/CamButtonsParent" node_paths=PackedStringArray("cam_manager")]
+[node name="Cam1Button" type="Button" parent="CameraUI/Map/CamButtonsParent"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.159245
-anchor_top = 0.451705
-anchor_right = 0.317245
-anchor_bottom = 0.555705
+anchor_left = 0.084365
+anchor_top = 0.683186
+anchor_right = 0.242365
+anchor_bottom = 0.787186
 text = "Cam1"
 script = ExtResource("3_k2tk3")
 camera_node_name = "Cam1"
-cam_manager = NodePath("../../../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="Cam2Button" type="Button" parent="CameraUI/Map/CamButtonsParent" node_paths=PackedStringArray("cam_manager")]
+[node name="Cam2Button" type="Button" parent="CameraUI/Map/CamButtonsParent"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.675919
-anchor_top = 0.462226
-anchor_right = 0.834919
-anchor_bottom = 0.555226
+anchor_left = 0.483726
+anchor_top = 0.696338
+anchor_right = 0.642726
+anchor_bottom = 0.789338
 text = "Cam2"
 script = ExtResource("3_k2tk3")
 camera_node_name = "Cam2"
-cam_manager = NodePath("../../../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="Cam3Button" type="Button" parent="CameraUI/Map/CamButtonsParent" node_paths=PackedStringArray("cam_manager")]
+[node name="Cam3Button" type="Button" parent="CameraUI/Map/CamButtonsParent"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.363918
-anchor_top = 0.0439815
-anchor_right = 0.522918
-anchor_bottom = 0.136981
+anchor_left = 0.361422
+anchor_top = 0.472748
+anchor_right = 0.520422
+anchor_bottom = 0.565748
 text = "Cam3"
 script = ExtResource("3_k2tk3")
 camera_node_name = "Cam3"
-cam_manager = NodePath("../../../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="Cam4Button" type="Button" parent="CameraUI/Map/CamButtonsParent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.705871
+anchor_top = 0.380682
+anchor_right = 0.864871
+anchor_bottom = 0.473681
+text = "Cam4"
+script = ExtResource("3_k2tk3")
+camera_node_name = "Cam4"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cam5Button" type="Button" parent="CameraUI/Map/CamButtonsParent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.51867
+anchor_top = 0.883102
+anchor_right = 0.67767
+anchor_bottom = 0.976101
+text = "Cam5"
+script = ExtResource("3_k2tk3")
+camera_node_name = "Cam5"
+metadata/_edit_use_anchors_ = true
+
+[node name="Cam5Button2" type="Button" parent="CameraUI/Map/CamButtonsParent"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0219647
+anchor_top = 0.877841
+anchor_right = 0.180965
+anchor_bottom = 0.97084
+text = "Cam6"
+script = ExtResource("3_k2tk3")
+camera_node_name = "Cam6"
 metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CameraUI"]
