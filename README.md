@@ -11,6 +11,7 @@ A basic game that imitates some of the mechanics of the popular 2014 game [Five 
 ## Planned features
 - Animatronics
 - Security door
+- Some other missing stuff
 
 ## Important notes
-> <strong>This does not aim to be a complete remake of FNAF2. This game has it's own characters, map, etc.</strong>
+> <strong>This project does not aim to replace the original game, just show how implementing some of the original mechanics can be done in Godot.</strong>
