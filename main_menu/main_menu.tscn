@@ -112,15 +112,15 @@ alignment = 0
 
 [node name="Background" type="Node3D" parent="."]
 
-[node name="blue_animatronic" parent="Background" instance=ExtResource("1_t3jvm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.698275, -1.17157, 0.761068)
+[node name="Camera3D" type="Camera3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.26806)
+fov = 38.6
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.416245, 0.897024, 2.52208)
 
-[node name="Camera3D" type="Camera3D" parent="Background"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.26806)
-fov = 38.6
+[node name="blue_animatronic" parent="Background" instance=ExtResource("1_t3jvm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.698275, -1.17157, 0.761068)
 
 [node name="yellow_animatronic" parent="Background" instance=ExtResource("8_j61co")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.313401, -1.16383, -0.16573)

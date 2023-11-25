@@ -1,5 +1,9 @@
 extends Node
 class_name CameraManager
+## Camera Manager node
+##
+## This node manages a bunch of Camera3D nodes and keeps in it's scene a Camera UI
+## that contains a bunch of camera buttons to allow the player to switch between cameras.
 
 const DEFAULT_CAM_INDEX = 0
 
@@ -16,12 +20,16 @@ var all_cams = {}
 func _ready():
 	cam_ui.visible = false
 	
+	# Add all cameras to the camera dictionary
+	# Each key is the name of the camera in lowercase and the value is a reference to the Camera3D node.
 	for c in get_children():
 		if c is Camera3D:
 			all_cams[c.name.to_lower()] = c
 			c.current = false
 			c.visible = false
-			
+	
+	# Connect the cam_button_pressed signal from each camera button
+	# to the set_current_cam function
 	for c in cam_buttons_parent.get_children():
 		if c is BaseButton:
 			c.connect("cam_button_pressed", set_current_cam)
