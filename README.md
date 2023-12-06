@@ -12,7 +12,7 @@ A basic game that imitates some of the mechanics of the popular 2014 game [Five 
 - Mask
 
 ## Planned features
-- Making better use of composition instead of inheritance for the animatronics (potentially with nodes or custom resources)
+- Making better use of composition instead of inheritance for the animatronics
 - Security door(s) (because my older fnaf 1 example project is outdated)
 - More documentation/comments
 - Better structure/cleaner code
