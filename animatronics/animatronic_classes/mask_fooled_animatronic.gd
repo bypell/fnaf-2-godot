@@ -26,7 +26,7 @@ func _process(delta):
 
 ## A different movement opportunity system meant to be used when the animatronic wants to enter the office.[br]
 ## The animatronic has a 10% chance to enter the office every 1.5 - (0.5 x (ai_level/MAX_AI_LEVEL)) seconds
-## or it will enter the office if the player has the mask on for a certain amount of opportunities.[br]
+## or it will enter the office if the player has the mask on for 4 movement opportunities.[br]
 ## The safe_ticks parameter makes the first set amount of movement opportunities fail.[br]
 ## Use the "await" keyword to wait until the function is done before making the animatronic do something else.
 func wait_for_entering_office_successful_movement_opportunity(safe_ticks : float = 0):
