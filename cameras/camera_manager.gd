@@ -44,7 +44,7 @@ func _ready():
 func _process(delta):
 	# Turning on flashlight on the current camera if the action is pressed
 	# We are just changing the camera's visibility (which does not 
-	# affect the camera in itself, just it's child SpotLight3D)
+	# affect the camera in itself, just its child SpotLight3D)
 	if Input.is_action_pressed("flashlight") and selected_cam.current:
 		selected_cam.visible = true
 		if not cam_flashlight_sound.playing:
