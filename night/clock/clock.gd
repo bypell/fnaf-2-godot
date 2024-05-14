@@ -12,7 +12,10 @@ var current_hour : int = 0
 
 
 func _ready():
-	# todo: should put this in another function and call it in a deferred way. (too lazy to git clone and fix rn)
+	_start_counting.call_deferred()
+
+
+func _start_counting():
 	while current_hour < 6:
 		label.text = _get_current_hour_text()
 		await get_tree().create_timer(SECONDS_BETWEEN_HOURS).timeout
